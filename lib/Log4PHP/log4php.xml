@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="myConsoleAppender" class="LoggerAppenderConsole">
+        <layout class="LoggerLayoutTTCC" />
+    </appender>
+
+    <appender name="myFileAppender" class="LoggerAppenderFile">
+        <layout class="LoggerLayoutTTCC" />
+        <param name="file" value="../../Log.log" />
+    </appender>
+
+    <root>
+        <level value="INFO" />
+        <appender_ref ref="myConsoleAppender" />
+        <appender_ref ref="myFileAppender" />
+    </root>
+
+</configuration>

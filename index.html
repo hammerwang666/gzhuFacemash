@@ -1,0 +1,108 @@
+<!doctype html>
+<!--
+Design by Free Responsive Templates
+http://www.free-responsive-templates.com
+Released for free under a Creative Commons Attribution 3.0 Unported License (CC BY 3.0)
+Coder: lsa, free.responsive.templates@gmail.com
+Created: 11 September 2012 
+-->
+<html ng-app="photoManage">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GZHU Pretty Girls</title>
+    <link href="css/style1.css" rel="stylesheet" type="text/css">
+    <!--<link rel="stylesheet" href="css/5grid/core.css" />-->
+    <!--<link rel="stylesheet" href="css/5grid/core-desktop.css" />-->
+    <!--<link rel="stylesheet" href="css/5grid/core-1200px.css" />-->
+    <!--<link rel="stylesheet" href="css/5grid/core-noscript.css" />-->
+    <link rel="stylesheet" href="css/style1.css" />
+    <!--<link rel="stylesheet" href="css/style.css" />-->
+    <link rel="stylesheet" href="css/style-desktop.css" />
+
+    <script type="text/javascript" src="lib/angular/angular-1.0.4.min.js"></script>
+    <script type="text/javascript" src="lib/angular/angular-resource-1.0.0.min.js"></script>
+    <script type="text/javascript" src="js/photoCtrl.js"></script>
+    <script type="text/javascript" src="js/photoService.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.scrolltotop.js"></script>
+    <script type="text/javascript" src="js/jquery.lazyload.min.js"></script>
+
+    <script type="text/javascript">
+        jQuery(function($){
+            $.scrolltotop({
+                className: 'totop',
+                controlHTML : ' <a href="javascript:;"><img src="images/up.png"></a>',
+            offsety:0
+        });
+        });
+
+        $("img").lazyload();
+    </script>
+</head>
+<body ng-controller="photoCtrl" ng-cloak>
+<h1 ><a href="" style="color: #e68b9f">GZHU Pretty Girls</a></h1>
+<!--<nav>-->
+<!--<ul>-->
+<!--<li class="active"><a href="">Top100</a></li>-->
+<!--<li><a href="">All</a></li>-->
+<!--&lt;!&ndash;<li><a href="">Services</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li><a href="">Blog</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li><a href="">Contact</a></li>&ndash;&gt;-->
+<!--</ul>-->
+<!--</nav>-->
+<nav id="nav" class="site-nav">
+    <ul>
+        <li id="topId" class="current_page_item" ng-click="changePage('Top')"><a href="index.html">Top1000</a></li>
+
+        <li id="allId"  ng-click="changePage('All')"><a >All</a></li>
+        <!--<li><a href="left-sidebar.html">Left Sidebar</a></li>-->
+        <!--<li><a href="no-sidebar.html">No Sidebar</a></li>-->
+    </ul>
+</nav>
+
+
+<div class="wrapper" >
+    <div id="chooseXyId" style="display: none;" class="goodsSearchPanel">
+        <!--<span style="float: left;color: #333333"> 选择学院: &nbsp;</span>-->
+        <!--<a id="allTypeId" style="float: left; padding: 4px;margin-top: -4px; "-->
+        <!--ng-click="initGetGoods('all' , 1 , 15)">&nbsp;&nbsp;全部&nbsp;&nbsp;</a>-->
+
+        <div style="float: left;padding: 5px;" ng-repeat="xy in xyAll">
+            <a ng-class="xy.class" ng-click="getPhotoByXy(xy.XYDM)">&nbsp;&nbsp;{{xy.XYMC}}&nbsp;&nbsp;</a>
+        </div>
+    </div>
+    <div class="photoBigBox"  ng-init="changePage(Top)">
+
+        <div class="photoBoxWrap" ng-repeat="photo in photos">
+        <div class="photoBox" >
+            <div class="photoBoxPic"><a href="">
+                <img class="lazy" ng-src="{{photo.PHOTO_PATH}}" alt="" title="赞一下她" ng-click="love(photo)" style="width: 180px;height: 250px;">
+
+            </a></div>
+
+
+            <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the-->
+            <!--industry's standard dummy text ever since</p>-->
+
+            <div class="templateLink ">
+                <h2 style="color: #e68b9f">No.{{photo.ROWNUM}}  {{photo.FULLNAME}}<br>
+                    <a rel="1" class="img_on" style="color: #e68b9f;" title="有{{photo.LOVE}}人赞过她" ng-click="love(photo)">{{photo.LOVE}}</a></h2>
+                <p style="color: #289BF0;">
+                    {{photo.XYMC}}</p>
+                <!--<p style="color: #289BF0;">-->
+                    <!--{{photo.HOTEL}}</p>-->
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="clearfloat"></div>
+
+</div>
+<footer>
+    <p>
+        Copyright &copy; Fanz
+    </p>
+</footer>
+</body>
+</html>
